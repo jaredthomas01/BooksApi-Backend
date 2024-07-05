@@ -23,29 +23,31 @@ public class BooksEntity {
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name="pages")
+    @Column(name = "pages")
     private String pages;
 
     @Column(name = "Quantity")
     private int quantity;
 
     @Column(name = "price")
-   private double price;
+    private double price;
 
     @Column(name = "Book_sold_on_credit")
-    private String Sold_On_Credit;
+    private String soldOnCredit;
 
     @Column(name = "Book_sold_on_debt")
-    private String SoldOnDebt;
+    private String soldOnDebt;
 
     @Column(name = "Books_Sold")
-    private String BooksSold;
+    private String booksSold;
 
-    public BooksEntity() {
+    @Lob
+    @Column(name = "image")
+    private String image;
 
-    }
+    public BooksEntity() {}
 
-    public BooksEntity(Long id, String title, String author, String isbn, String publisher, String pages, int quantity,double price,String soldOnCredit, String soldOnDebt, String booksSold) {
+    public BooksEntity(Long id, String title, String author, String isbn, String publisher, String pages, int quantity, double price, String soldOnCredit, String soldOnDebt, String booksSold, String image) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -54,10 +56,13 @@ public class BooksEntity {
         this.pages = pages;
         this.quantity = quantity;
         this.price = price;
-        Sold_On_Credit = soldOnCredit;
-        SoldOnDebt = soldOnDebt;
-        BooksSold = booksSold;
+        this.soldOnCredit = soldOnCredit;
+        this.soldOnDebt = soldOnDebt;
+        this.booksSold = booksSold;
+        this.image = image;
     }
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -68,27 +73,27 @@ public class BooksEntity {
     }
 
     public String getBooksSold() {
-        return BooksSold;
+        return booksSold;
     }
 
     public void setBooksSold(String booksSold) {
-        BooksSold = booksSold;
+        this.booksSold = booksSold;
     }
 
     public String getSoldOnDebt() {
-        return SoldOnDebt;
+        return soldOnDebt;
     }
 
     public void setSoldOnDebt(String soldOnDebt) {
-        SoldOnDebt = soldOnDebt;
+        this.soldOnDebt = soldOnDebt;
     }
 
     public String getSoldOnCredit() {
-        return Sold_On_Credit;
+        return soldOnCredit;
     }
 
     public void setSoldOnCredit(String soldOnCredit) {
-        Sold_On_Credit = soldOnCredit;
+        this.soldOnCredit = soldOnCredit;
     }
 
     public String getPages() {
@@ -100,8 +105,9 @@ public class BooksEntity {
     }
 
     public int getQuantity() {
-       return quantity;
+        return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -109,6 +115,7 @@ public class BooksEntity {
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -143,5 +150,13 @@ public class BooksEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
