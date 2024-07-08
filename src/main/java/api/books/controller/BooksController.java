@@ -33,8 +33,8 @@ public class BooksController {
     }
 
     @PutMapping("/{id}")
-    public BooksEntity updateBooks(@RequestBody BooksEntity booksEntity) {
-        return booksService.updateBooks(booksEntity);
+    public BooksEntity updateBooks(@PathVariable Long id, @RequestBody BooksEntity booksEntity) {
+        return booksService.updateBooks(id, booksEntity);
     }
 
     @DeleteMapping("/{id}")

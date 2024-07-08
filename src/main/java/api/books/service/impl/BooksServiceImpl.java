@@ -1,5 +1,6 @@
 package api.books.service.impl;
 
+
 import api.books.entity.BooksEntity;
 import api.books.repository.BooksRepository;
 import api.books.service.BooksService;
@@ -34,9 +35,25 @@ public class BooksServiceImpl implements BooksService {
     }
 
     @Override
-    public BooksEntity updateBooks(BooksEntity booksEntity) {
-        return booksRepository.save(booksEntity);
+    public BooksEntity updateBooks(Long id, BooksEntity booksEntity) {
+        Optional<BooksEntity> existingBookOpt = booksRepository.findById(id);
+
+        if (existingBookOpt.isPresent()) {
+            BooksEntity existingBook = existingBookOpt.get();
+            existingBook.setTitle(booksEntity.getTitle());
+            existingBook.setAuthor(booksEntity.getAuthor());
+            existingBook.setIsbn(booksEntity.getIsbn());
+            existingBook.setPublisher(booksEntity.getPublisher());
+            existingBook.setPages(booksEntity.getPages());
+            existingBook.setQuantity(booksEntity.getQuantity());
+            existingBook.setPrice(booksEntity.getPrice());
+            existingBook.setImage(booksEntity.getImage());
+            return booksRepository.save(existingBook);
+        } else {
+            throw new ResourceNotFoundException("Book not found with ID: " + id);
+        }
     }
+
 
     @Override
     public void deleteBooks(Long id) {

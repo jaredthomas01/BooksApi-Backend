@@ -9,7 +9,8 @@ public interface BooksService {
     List<BooksEntity> findAllBooks();
     Optional<BooksEntity> findById(Long id);
     BooksEntity saveBooks(BooksEntity booksEntity);
-    BooksEntity updateBooks(BooksEntity booksEntity);
+    BooksEntity updateBooks(Long id, BooksEntity booksEntity);
+
     void deleteBooks(Long id);
 
 }
