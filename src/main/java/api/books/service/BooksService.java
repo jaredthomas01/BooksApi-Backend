@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BooksService {
+    List<BooksEntity> findNewArrivals();
+    List<BooksEntity> findFeatured();
     List<BooksEntity> findAllBooks();
     Optional<BooksEntity> findById(Long id);
     BooksEntity saveBooks(BooksEntity booksEntity);

@@ -60,4 +60,14 @@ public class BooksServiceImpl implements BooksService {
         booksRepository.deleteById(id);
     }
 
+    @Override
+    public List<BooksEntity> findNewArrivals() {
+        return booksRepository.findTop5ByOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public List<BooksEntity> findFeatured() {
+        return booksRepository.findTop10ByOrderByCreatedAtDesc();
+    }
+
 }

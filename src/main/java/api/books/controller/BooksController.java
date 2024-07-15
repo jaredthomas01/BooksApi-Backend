@@ -42,4 +42,14 @@ public class BooksController {
         booksService.deleteBooks(id);
     }
 
+    @GetMapping("/{new-arrivals}")
+    public List<BooksEntity> getNewArrivals() {
+        return booksService.findNewArrivals();
+    }
+
+    @GetMapping("/{featured}")
+    public List<BooksEntity> getFeatured() {
+        return booksService.findFeatured();
+    }
+
 }
