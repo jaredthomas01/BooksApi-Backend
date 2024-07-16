@@ -1,6 +1,8 @@
 package api.books.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "Books")
@@ -45,9 +47,13 @@ public class BooksEntity {
     @Column(name = "image")
     private String image;
 
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
     public BooksEntity() {}
 
-    public BooksEntity(Long id, String title, String author, String isbn, String publisher, String pages, int quantity, double price, String soldOnCredit, String soldOnDebt, String booksSold, String image) {
+    public BooksEntity(Long id, String title, String author, String isbn, String publisher, String pages, int quantity, double price, String soldOnCredit, String soldOnDebt, String booksSold, String image, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -60,6 +66,7 @@ public class BooksEntity {
         this.soldOnDebt = soldOnDebt;
         this.booksSold = booksSold;
         this.image = image;
+        this.createdAt = LocalDateTime.now();
     }
 
     // Getters and setters
@@ -158,5 +165,11 @@ public class BooksEntity {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

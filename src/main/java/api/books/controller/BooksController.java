@@ -42,13 +42,13 @@ public class BooksController {
         booksService.deleteBooks(id);
     }
 
-    @GetMapping("/{new-arrivals}")
-    public List<BooksEntity> getNewArrivals(@PathVariable("new-arrivals") String parameter) {
+    @GetMapping("/new-arrivals")
+    public List<BooksEntity> getNewArrivals() {
         return booksService.findNewArrivals();
     }
 
-    @GetMapping("/{featured}")
-    public List<BooksEntity> getFeatured(@PathVariable String featured) {
+    @GetMapping("/featured")
+    public List<BooksEntity> getFeatured() {
         return booksService.findFeatured();
     }
 
