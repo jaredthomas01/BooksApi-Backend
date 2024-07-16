@@ -38,17 +38,17 @@ public class BooksController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable("id") Long id) {
+    public void deleteBooks(@PathVariable("id") Long id) {
         booksService.deleteBooks(id);
     }
 
     @GetMapping("/{new-arrivals}")
-    public List<BooksEntity> getNewArrivals() {
+    public List<BooksEntity> getNewArrivals(@PathVariable("new-arrivals") String parameter) {
         return booksService.findNewArrivals();
     }
 
     @GetMapping("/{featured}")
-    public List<BooksEntity> getFeatured() {
+    public List<BooksEntity> getFeatured(@PathVariable String featured) {
         return booksService.findFeatured();
     }
 
