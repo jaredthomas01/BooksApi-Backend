@@ -12,7 +12,6 @@ public interface BooksService {
     Optional<BooksEntity> findById(Long id);
     BooksEntity saveBooks(BooksEntity booksEntity);
     BooksEntity updateBooks(Long id, BooksEntity booksEntity);
-
     void deleteBooks(Long id);
 
 }
