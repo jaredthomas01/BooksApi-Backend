@@ -43,7 +43,6 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
-
     public Long getId() {
         return id;
     }
