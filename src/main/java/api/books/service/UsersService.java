@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UsersService {
-    UserEntity createUser(UserEntity user);
+    UserEntity createUser(UserEntity userEntity);
     Optional<UserEntity> getUserById(Long id);
     List<UserEntity> getAllUsers();
     UserEntity updateUser(Long id, UserEntity user);

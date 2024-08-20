@@ -1,4 +1,5 @@
 package api.books.controller;
+import api.books.entity.BooksEntity;
 import api.books.entity.UserEntity;
 import api.books.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,8 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
-        UserEntity createdUser = usersService.createUser(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    public UserEntity createUser(@RequestBody UserEntity userEntity) {
+        return usersService.createUser(userEntity);
     }
 
     @GetMapping("/{id}")
@@ -40,9 +40,9 @@ public class UsersController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity user) {
+    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity userEntity) {
         try {
-            UserEntity updatedUser = usersService.updateUser(id, user);
+            UserEntity updatedUser = usersService.updateUser(id, userEntity);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
